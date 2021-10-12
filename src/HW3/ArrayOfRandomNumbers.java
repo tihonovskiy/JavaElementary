@@ -5,9 +5,15 @@ package HW3;
 Написать метод который вернет массив квадратов этих чисел, отсортированных по возрастанию.
 */
 
+import java.util.Random;
+
 public class ArrayOfRandomNumbers {
     public static void main(String[] args) {
-        int[] intArray = {-10, 5, 3, 7, -2, -4, 8, -9, -1, 6, 0, 10};
+        int[] intArray = new int[12];
+        Random random = new Random();
+        for (int i = 0; i < intArray.length; i++) {
+            intArray[i] = random.nextInt(20) - 10;
+        }
 
         int[] resultArray = sortArray(intArray);
         for (int i = 0; i < resultArray.length; i++) {

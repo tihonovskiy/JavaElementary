@@ -1,8 +1,6 @@
 package HW4;
 
-/*
-https://leetcode.com/problems/sort-array-by-parity/
- */
+//https://leetcode.com/problems/sort-array-by-parity/
 
 public class SortArrayByParity {
     public static void main(String[] args) {

@@ -19,15 +19,15 @@ public class reverseWords {
         System.out.println(getReverseWordsString(myString3));
     }
 
-    private static StringBuilder getReverseWordsString(String myString) {
-        StringBuilder result = new StringBuilder();
+    private static String getReverseWordsString(String myString) {
+        String result = new String();
 
         String[] tmpWordsArray = myString.split(" ");
 
         for (int i = tmpWordsArray.length-1; i >= 0; i--) {
-            result = result.append(tmpWordsArray[i]).append(" ");
+            result = result + tmpWordsArray[i] + " ";
         }
 
-        return result;
+        return result.substring(0, result.length() - 1);
     }
 }

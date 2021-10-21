@@ -2,7 +2,7 @@ package HW6;
 
 public class Iterator {
     private int[][] arr;
-    private int count = -1;
+    private static int count = -1;
 
     public Iterator(int[][] arr) {
         this.arr = arr;
@@ -10,10 +10,8 @@ public class Iterator {
 
     public boolean hasNext() {
         if (getSizeArray(this.arr) > count+1) {
-            count++;
             return true;
         } else {
-            count++;
             return false;
         }
     }
@@ -53,6 +51,7 @@ public class Iterator {
             }
         }
 
+        count++;
         return result;
     }
 }

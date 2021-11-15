@@ -34,18 +34,14 @@ public class Join {
     }
 
     public static LinkedList<Integer> join1(LinkedList<Integer> linkedList1, LinkedList<Integer> linkedList2) {
-        LinkedList<Integer> result = new LinkedList<>();
-
-        result.addAll(linkedList1);
+        LinkedList<Integer> result = new LinkedList<>(linkedList1);
         result.addAll(linkedList2);
 
         return result;
     }
 
     public static LinkedList<Integer> join2(LinkedList<Integer> linkedList1, LinkedList<Integer> linkedList2) {
-        LinkedList<Integer> result = new LinkedList<>();
-
-        result = (LinkedList<Integer>) linkedList1.clone();
+        LinkedList<Integer> result = (LinkedList<Integer>) linkedList1.clone();
         result.addAll(linkedList2);
 
         return result;

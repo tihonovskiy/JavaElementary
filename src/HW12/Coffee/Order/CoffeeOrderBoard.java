@@ -3,11 +3,7 @@ package HW12.Coffee.Order;
 import java.util.LinkedList;
 
 public class CoffeeOrderBoard {
-    private LinkedList<Order> orders;
-
-    public CoffeeOrderBoard() {
-        orders = new LinkedList<>();
-    }
+    private LinkedList<Order> orders = new LinkedList<>();
 
     public void add(String name) {
         orders.addLast(new Order(orders.size() + 1, name));
@@ -20,15 +16,14 @@ public class CoffeeOrderBoard {
     }
 
     public Order deliver(int orderNum) {
-        int index = 0;
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getNum() == orderNum) {
-                index = i;
+                orders.addFirst(orders.get(i));
+                orders.remove(i+1);
+                this.deliver();
             }
         }
-        Order order = orders.get(index);
-        orders.remove(index);
-        return order;
+        return null;
     }
 
     public void draw() {

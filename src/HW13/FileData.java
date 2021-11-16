@@ -11,28 +11,12 @@ public class FileData {
         this.path = path;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getSizeByte() {
         return sizeByte;
     }
 
-    public void setSizeByte(Integer sizeByte) {
-        this.sizeByte = sizeByte;
-    }
-
     public String getPath() {
         return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 
     @Override

@@ -1,11 +1,11 @@
 package HW13;
 
-public class FileData {
+public class FileData implements Comparable<FileData> {
     private String name;
-    private Integer sizeByte;
+    private int sizeByte;
     private String path;
 
-    public FileData(String name, Integer sizeByte, String path) {
+    public FileData(String name, int sizeByte, String path) {
         this.name = name;
         this.sizeByte = sizeByte;
         this.path = path;
@@ -26,5 +26,10 @@ public class FileData {
                 ", sizeByte=" + sizeByte +
                 ", path='" + path + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(FileData file) {
+        return this.getSizeByte() - file.getSizeByte();
     }
 }

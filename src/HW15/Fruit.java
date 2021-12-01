@@ -1,4 +1,5 @@
 package HW15;
 
-public class Fruit {
+public interface Fruit {
+    float getWeight();
 }

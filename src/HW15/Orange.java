@@ -1,6 +1,6 @@
 package HW15;
 
-public class Orange extends Fruit {
+public class Orange implements Fruit {
     private String gradeOrange;
     private final float weight = 1.5F;
 
@@ -8,10 +8,15 @@ public class Orange extends Fruit {
         this.gradeOrange = gradeOrange;
     }
 
-    public String getGradeOrange() {
-        return gradeOrange;
+    @Override
+    public String toString() {
+        return "Orange{" +
+                "gradeOrange='" + gradeOrange + '\'' +
+                ", weight=" + weight +
+                '}';
     }
 
+    @Override
     public float getWeight() {
         return weight;
     }

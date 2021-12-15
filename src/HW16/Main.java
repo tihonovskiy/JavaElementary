@@ -1,21 +1,21 @@
 package HW16;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class Main {
+
     public static void main(String[] args) throws Exception {
-        myTest();
+        FileLogger fileLogger = new FileLogger();
+        fileLogger.debug("Debug1");
+        fileLogger.debug("Debug2");
+        fileLogger.debug("Debug3");
+        //fileLogger.debug("Debug4");
+
+        fileLogger.info("MyInfo1");
+        fileLogger.info("MyInfo2");
+        fileLogger.info("MyInfo3");
+        //fileLogger.info("MyInfo4");
+
+        FileLoggerConfigurationLoader flcl = new FileLoggerConfigurationLoader();
+        flcl.load(fileLogger.getFileInfo());
     }
 
-    public static void myTest() throws IOException {
-        File file = new File("./test.txt");
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        bw.write("my string");
-        bw.newLine();
-        bw.flush();
-        System.out.println(file.length());
-    }
 }

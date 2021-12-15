@@ -1,0 +1,3 @@
+[Wed Dec 15 22:55:32 EET 2021][DEBUG]Message:[Debug1]
+[Wed Dec 15 22:55:32 EET 2021][DEBUG]Message:[Debug2]
+[Wed Dec 15 22:55:32 EET 2021][DEBUG]Message:[Debug3]

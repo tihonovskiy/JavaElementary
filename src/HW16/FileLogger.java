@@ -4,48 +4,49 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FileLogger {
     private FileLoggerConfiguration flc;
     private BufferedWriter writer;
-    private final File fileDebug;
-    private final File fileInfo;
-    private final FileWriter fileWriterDebug;
-    private final FileWriter fileWriterInfo;
+    private FileWriter fileLogWriter;
 
-    public FileLogger() throws IOException {
-        this.flc = new FileLoggerConfiguration();
-        fileDebug = new File("./debug.txt");
-        fileInfo = new File("./info.txt");
-        fileWriterDebug = new FileWriter(fileDebug);
-        fileWriterInfo = new FileWriter(fileInfo);
 
+    public FileLogger(FileLoggerConfiguration newflc) throws IOException {
+        flc = newflc;
+        fileLogWriter = new FileWriter(flc.getFile());
     }
 
-    public void debug(String message) throws IOException, FileMaxSizeReachedException {
-        if(fileDebug.length() > flc.getMaxSizeFile()) {
-            throw new FileMaxSizeReachedException("Actual fileSize = " + fileDebug.length() + " maxSize = " + flc.getMaxSizeFile());
+    public void debug(String message) throws FileMaxSizeReachedException, IOException {
+        if (flc.getLevel() == LoggingLevel.DEBUG) {
+            checkFileSize();
+            writer = new BufferedWriter(fileLogWriter);
+            writeToFile(String.format(flc.getWriteFormat(), LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), LoggingLevel.DEBUG, message));
         }
-        flc = new FileLoggerConfiguration(fileDebug, LoggingLevel.DEBUG);
-        writer = new BufferedWriter(fileWriterDebug);
-        flc.setWriteFormat(message);
-        writeToFile();
     }
 
     public void info(String message) throws IOException {
-        flc = new FileLoggerConfiguration(fileInfo, LoggingLevel.INFO);
-        writer = new BufferedWriter(fileWriterInfo);
-        flc.setWriteFormat(message);
-        writeToFile();
+        checkFileSize();
+        writer = new BufferedWriter(fileLogWriter);
+        writeToFile(String.format(flc.getWriteFormat(), LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), LoggingLevel.INFO, message));
     }
 
-    public void writeToFile() throws IOException {
-        writer.write(flc.getWriteFormat());
+    public void writeToFile(String logMessage) throws IOException {
+        writer.write(logMessage);
         writer.newLine();
         writer.flush();
     }
 
-    public File getFileInfo() {
-        return fileInfo;
+    private void checkFileSize() throws IOException {
+        if (flc.getFile().length() > flc.getMaxSizeFile()) {
+            //throw new FileMaxSizeReachedException("Actual fileSize = " + flc.getFile().length() + " maxSize = " + flc.getMaxSizeFile());
+            File newFile = new File(String.format("./Log_%s.txt", LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("yyyy_MM_dd HH-mm-ss.SSS"))));
+            flc.setFile(newFile);
+            fileLogWriter = new FileWriter(newFile);
+        }
     }
 }

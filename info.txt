@@ -1,3 +1,0 @@
-[Wed Dec 15 22:55:32 EET 2021][INFO]Message:[MyInfo1]
-[Wed Dec 15 22:55:32 EET 2021][INFO]Message:[MyInfo2]
-[Wed Dec 15 22:55:32 EET 2021][INFO]Message:[MyInfo3]

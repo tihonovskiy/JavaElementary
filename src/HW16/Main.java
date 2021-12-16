@@ -1,21 +1,20 @@
 package HW16;
 
+import java.io.File;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        FileLogger fileLogger = new FileLogger();
-        fileLogger.debug("Debug1");
-        fileLogger.debug("Debug2");
-        fileLogger.debug("Debug3");
-        //fileLogger.debug("Debug4");
+        FileLogger fileLogger = new FileLogger(FileLoggerConfigurationLoader.load(new File("./config.txt")));
 
-        fileLogger.info("MyInfo1");
-        fileLogger.info("MyInfo2");
-        fileLogger.info("MyInfo3");
-        //fileLogger.info("MyInfo4");
-
-        FileLoggerConfigurationLoader flcl = new FileLoggerConfigurationLoader();
-        flcl.load(fileLogger.getFileInfo());
+        fileLogger.info("info1");
+        fileLogger.info("info2");
+        fileLogger.info("info3");
+        fileLogger.info("info4");
+        fileLogger.debug("debug1");
+        fileLogger.debug("debug2");
+        fileLogger.debug("debug3");
+        fileLogger.debug("debug4");
     }
 
 }

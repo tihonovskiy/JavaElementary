@@ -1,19 +1,29 @@
 package HW16;
 
 import java.io.File;
-import java.util.Date;
 
 public class FileLoggerConfiguration {
     private File file;
     private LoggingLevel level;
     private byte maxSizeFile = 127;
-    private String writeFormat;
+    private String writeFormat = "[%s][%s] Message:[%s]";
 
     public FileLoggerConfiguration() {
     }
 
-    public FileLoggerConfiguration(File file, LoggingLevel level) {
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
         this.file = file;
+    }
+
+    public LoggingLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(LoggingLevel level) {
         this.level = level;
     }
 
@@ -21,23 +31,15 @@ public class FileLoggerConfiguration {
         return maxSizeFile;
     }
 
+    public void setMaxSizeFile(byte maxSizeFile) {
+        this.maxSizeFile = maxSizeFile;
+    }
+
     public String getWriteFormat() {
         return writeFormat;
     }
 
     public void setWriteFormat(String writeFormat) {
-        this.writeFormat = "[" + new Date() + "][" + level + "]" + "Message:[" + writeFormat + "]";;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
-
-    public void setLevel(LoggingLevel level) {
-        this.level = level;
-    }
-
-    public void setMaxSizeFile(byte maxSizeFile) {
-        this.maxSizeFile = maxSizeFile;
+        this.writeFormat = writeFormat;
     }
 }

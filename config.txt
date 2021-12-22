@@ -1,0 +1,4 @@
+FILE: ./NewLog.txt
+LEVEL: DEBUG
+MAX_SIZE: 127
+FORMAT: [%s][%s] Message:[%s]

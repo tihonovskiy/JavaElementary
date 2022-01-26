@@ -1,0 +1,6 @@
+Logger\FileLoggerConfigurationLoader.class
+Logger\FileMaxSizeReachedException.class
+Logger\FileLogger.class
+Logger\FileLoggerConfiguration.class
+Logger\LoggedLevel.class
+Logger\ConfigParams.class

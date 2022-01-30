@@ -19,8 +19,9 @@ public class FileLoggerTest {
         fileLogger = new FileLogger(FileLoggerConfigurationLoader.load(new File("./config.txt")));
         fileLogger.debug("debug1");
         BufferedReader reader = new BufferedReader(new FileReader(new File("NewLog.txt")));
-        Assertions.assertEquals("[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "][DEBUG] Message:[debug1]",
-                reader.readLine());
+        String actualResult = reader.readLine();
+        Assertions.assertTrue(actualResult.contains("[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))));
+        Assertions.assertTrue(actualResult.contains("][DEBUG] Message:[debug1]"));
     }
 
     @Test
@@ -28,8 +29,9 @@ public class FileLoggerTest {
         fileLogger = new FileLogger(FileLoggerConfigurationLoader.load(new File("./config.txt")));
         fileLogger.info("info1");
         BufferedReader reader = new BufferedReader(new FileReader(new File("NewLog.txt")));
-        Assertions.assertEquals("[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "][INFO] Message:[info1]",
-                reader.readLine());
+        String actualResult = reader.readLine();
+        Assertions.assertTrue(actualResult.contains("[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))));
+        Assertions.assertTrue(actualResult.contains("][INFO] Message:[info1]"));
     }
 
     @Test
